@@ -16,9 +16,10 @@ export default function(editor, opt = {}) {
       defaults: {
         ...defaultModel.prototype.defaults,
         duration: c.duration,
-        endText: c.endText,
         cookie: c.cookie,
         expires: c.expires,
+        endText: c.endText,
+        redirect: c.redirect,
         droppable: false,
         traits: [{
           label: 'Duration',
@@ -36,12 +37,17 @@ export default function(editor, opt = {}) {
           label: 'End text',
           name: 'endText',
           changeProp: 1,
+        },{
+          label: 'Redirect to',
+          name: 'redirect',
+          changeProp: 1,
         }],
         script: function() {
           var cookieName = '{[ cookie ]}';
           var cookieExpires = '{[ expires ]}';
           var endTxt = '{[ endText ]}';
           var duration = '{[ duration ]}';
+          var redirectUrl = '{[ redirect ]}';
           var promoclockEl = this.querySelector('[data-js=promoclock]');
           var endTextEl = this.querySelector('[data-js=promoclock-endtext]');
           var dayEl = this.querySelector('[data-js=promoclock-day]');
@@ -95,6 +101,9 @@ export default function(editor, opt = {}) {
               endTextEl.innerHTML = endTxt;
               promoclockEl.style.display = 'none';
               endTextEl.style.display = '';
+              if (redirectUrl) {
+                window.location.replace(redirectUrl);
+              }
             }
           }
 
@@ -130,7 +139,7 @@ export default function(editor, opt = {}) {
     view: defaultView.extend({
       init() {
         this.listenTo(this.model, 'change:duration change:cookie change:expires', () => document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); }));
-        this.listenTo(this.model, 'change:expires change:cookie change:endText change:duration', this.updateScript);
+        this.listenTo(this.model, 'change:expires change:cookie change:endText change:duration change:redirect', this.updateScript);
 
         const comps = this.model.get('components');
 

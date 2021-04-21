@@ -26,6 +26,9 @@ export default grapesjs.plugins.add('gjs-component-promoclock', (editor, opts = 
     // Duration in days
     duration: '',
 
+    // Redirect URL
+    redirect: '',
+
     // Date input type, eg, 'date', 'datetime-local'
     dateInputType: 'date',
 
