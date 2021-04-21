@@ -55,6 +55,7 @@ export default function(editor, opt = {}) {
           var minuteEl = this.querySelector('[data-js=promoclock-minute]');
           var secondEl = this.querySelector('[data-js=promoclock-second]');
           var oldInterval = this.gjs_promoclock_interval;
+          var durationMs = Number(duration)*24*60*60*1000;
           if(oldInterval) {
             oldInterval && clearInterval(oldInterval);
           }
@@ -107,8 +108,8 @@ export default function(editor, opt = {}) {
             }
           }
 
-          if (duration && cookieName && cookieExpires) {
-            var promoClockDate = Date.now() + Number(duration)*24*60*60*1000;
+          if (durationMs) {
+            var promoClockDate = Date.now() + durationMs;
             var promoClockDateCookie = getCookieValue(cookieName);
             if (promoClockDateCookie === '') {
               setCookieValue(cookieName, promoClockDate, Number(cookieExpires));
