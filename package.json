@@ -1,6 +1,6 @@
 {
   "name": "grapesjs-component-promoclock",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Simple promoclock component for the GrapesJS Editor",
   "main": "dist/grapesjs-component-promoclock.min.js",
   "scripts": {

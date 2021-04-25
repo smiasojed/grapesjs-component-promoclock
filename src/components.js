@@ -103,7 +103,11 @@ export default function(editor, opt = {}) {
               promoclockEl.style.display = 'none';
               endTextEl.style.display = '';
               if (redirectUrl) {
-                window.location.replace(redirectUrl);
+                if (window.location !== window.parent.location) {
+                  endTextEl.innerHTML = redirectUrl;
+                } else {
+                  window.location.replace(redirectUrl);
+                }
               }
             }
           }
