@@ -1,5 +1,5 @@
 # Based on grapesjs-component-countdown
-MOdification of https://github.com/artf/grapesjs-component-countdown.git
+Modification of https://github.com/artf/grapesjs-component-countdown.git
 
 # GrapesJS Promoclock
 
