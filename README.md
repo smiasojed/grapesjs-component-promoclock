@@ -1,3 +1,6 @@
+# Based on grapesjs-component-countdown
+MOdification of https://github.com/artf/grapesjs-component-countdown.git
+
 # GrapesJS Promoclock
 
 Simple promoclock component for GrapesJS Editor
